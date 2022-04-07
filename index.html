@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Vue</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <div id="hello"><h1>Hello Vue</h1></div>
+    <div id="contact">
+      <div class="card-products card-container" v-if="isShow">
+        <div
+          class="card"
+          v-for="product in products"
+          :class="{cart: product.isCart }"
+          @dblclick="toggleCart($event, product)"
+        >
+          <img v-bind:src="product.thumb" alt="" class="card-thumb" />
+          <h3>{{product.name}}</h3>
+          <p>{{product.price}}</p>
+        </div>
+      </div>
+      <div class="card-products card-container">
+        <div
+          class="card"
+          v-for="product in productsComputed"
+          :class="{cart: product.isCart }"
+          @dblclick="toggleCart($event, product)"
+        >
+          <img v-bind:src="product.thumb" alt="" class="card-thumb" />
+          <h3>{{product.name}}</h3>
+          <p>{{product.price}}</p>
+        </div>
+      </div>
+      <div class="filterPrice">
+        Bạn có thể lọc sản phẩm bằng cách nhập giá dưới đây <br />
+        <div class="price">
+          <input
+            type="number"
+            placeholder="Enter your price you want to fil"
+            v-model="userPrice"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="./vue.js"></script>
+</html>
